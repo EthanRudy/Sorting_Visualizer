@@ -96,6 +96,7 @@ void DisplayManager::draw_values() {
 	}
 }
 
+// Lol this does nothing, its purely aesthetic
 void DisplayManager::check(int n) {
 	window.clear(sf::Color::Black);
 
