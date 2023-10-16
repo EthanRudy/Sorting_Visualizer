@@ -14,6 +14,7 @@
 
 #include "../include/sorts/insertion/Insertion.hpp"
 #include "../include/sorts/insertion/Shell.hpp"
+#include "../include/sorts/insertion/Tree.hpp"
 
 #include "../include/Visualizer.h"
 
@@ -30,7 +31,7 @@
 	// Insertion
 	insertion,			DONE
 	shell,				DONE
-	tree,
+	tree,				DONE
 	bin_insertion,
 
 	// Exchange
@@ -66,10 +67,13 @@
 	// Merge
 	merge,
 	quad, 
+
+	// Hybrid
+	Intro
 */
 
 // Number of sorts availible to the user
-const short N_SORTS = 35;
+const short N_SORTS = 36;
 
 // Polymorphic Sort list. Holds an instance of each available sort
 Sort* sort_list[N_SORTS] = {
@@ -80,6 +84,7 @@ Sort* sort_list[N_SORTS] = {
 	new Cycle,
 	new Insertion,
 	new Shell,
+	new Tree,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -144,7 +149,8 @@ int main() {
 		"(3) Max Heap\n"
 		"(4) Cycle\n"
 		"(5) Insertion\n"
-		"(6) Shell\n";
+		"(6) Shell\n"
+		"(7) Tree\n";
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);

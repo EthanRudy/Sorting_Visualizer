@@ -53,6 +53,7 @@ void Cycle::run() {
 
     for (int start = 0; start <= len - 2; start++) {
         int elem = arr[start];
+        int elem_ind = start;
 
         int pos = start;
 
@@ -107,6 +108,9 @@ void Cycle::run() {
                 elem = arr[pos];
                 arr[pos] = temp;
                 ++sort_info._n_swaps;
+                ++sort_info._n_main_writes;
+                swap_a = pos;
+                swap_b = elem_ind;
                 usleep(delay);
             }
         }
