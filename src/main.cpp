@@ -12,6 +12,8 @@
 #include "../include/sorts/selection/MaxHeap.hpp"
 #include "../include/sorts/selection/Cycle.hpp"
 
+#include "../include/sorts/insertion/Insertion.hpp"
+
 #include "../include/Visualizer.h"
 
 // https://developer.lsst.io/cpp/style.html
@@ -25,7 +27,7 @@
 	cycle,				DONE		
 
 	// Insertion
-	insertion,
+	insertion,			DONE
 	shell,
 	tree,
 	bin_insertion,
@@ -75,7 +77,7 @@ Sort* sort_list[N_SORTS] = {
 	new MinHeap,
 	new MaxHeap,
 	new Cycle,
-	new Sort,
+	new Insertion,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -139,7 +141,8 @@ int main() {
 		"(1) Smooth\n"
 		"(2) Min Heap\n"
 		"(3) Max Heap\n"
-		"(4) Cycle";
+		"(4) Cycle\n"
+		"(5) Insertion\n";
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);
