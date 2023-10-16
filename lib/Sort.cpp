@@ -60,7 +60,7 @@ void Sort::shuffle() {
 
 
 // Set Delay
-void Sort::setDelay(short delay) {
+void Sort::setDelay(int delay) {
 	this->delay = delay;
 
 	sort_info._delay = delay;

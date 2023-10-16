@@ -35,7 +35,7 @@ public:
 	* 
 	* @param delay (in microseconds)
 	*/
-	void setDelay(short delay);
+	void setDelay(int delay);
 
 	/**
 	* Set Length
@@ -87,7 +87,7 @@ protected:
 	short len;			// Length of the array of values
 	short* arr;			// Array of values
 
-	short delay;		// Delay between operations
+	int delay;		// Delay between operations
 
 	/**
 	* Swaps two array indices (A & B)

@@ -7,14 +7,14 @@
 #include <climits>
 
 #include "../include/sorts/selection/Selection.hpp"
+#include "../include/sorts/selection/Smooth.hpp"
 #include "../include/Visualizer.h"
 
 // https://developer.lsst.io/cpp/style.html
 
-/* 	Goal Sorts
-
+/*
 	// Selection
-	selection,		DONE
+	selection,			DONE
 	smooth,
 	min_heap,
 	max_heap,
@@ -68,7 +68,7 @@ const short N_SORTS = 36;
 // Polymorphic Sort list. Holds an instance of each available sort
 Sort* sort_list[N_SORTS] = {
 	new Selection,
-	new Sort,
+	new Smooth,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -114,7 +114,7 @@ Sort* sort_list[N_SORTS] = {
 * 
 * @return Valid input
 */
-short getInput(std::string prompt, short min, short max);
+int getInput(std::string prompt, int min, int max);
 
 
 /**
@@ -133,7 +133,8 @@ bool isNumeric(const std::string& str);
 int main() {
 
 	std::string sort_prompt = "Enter Sort Index:\n"
-		"(0) Selection";
+		"(0) Selection\n"
+		"(1) Smooth";
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);
@@ -142,7 +143,7 @@ int main() {
 	short n_values = getInput("Enter number of elements:", 8, SHRT_MAX);
 
 	// How much delay
-	short delay = getInput("Enter delay (microseconds):", 0, 1000000);
+	int delay = getInput("Enter delay (microseconds):", 0, 1000000);
 
 	Sort* chosen = sort_list[sort_choice];
 	chosen->setLength(n_values);
@@ -156,7 +157,7 @@ int main() {
 
 
 // Gets input within the specified range (inclusive)
-short getInput(std::string prompt, short min, short max) {
+int getInput(std::string prompt, int min, int max) {
 	std::string choice_str;
 	bool is_num = false;
 	bool is_ranged = false;
@@ -170,7 +171,7 @@ short getInput(std::string prompt, short min, short max) {
 		if (!is_num) {
 			prompt = "Please enter only numerical digits!";
 		} else {
-			short choice = std::stoi(choice_str);
+			int choice = std::stoi(choice_str);
 			is_ranged = (choice >= min) && (choice <= max);
 			if (!is_ranged) { 
 				prompt = "Please enter a number in the range [" + 

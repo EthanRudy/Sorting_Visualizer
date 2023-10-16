@@ -19,7 +19,7 @@ public:
 	// Constants (won't update)
 	std::string _sort_name;		// Category and name of sort
 	short _n_values;			// Number of values in sort array
-	short _delay;				// Delay per operation
+	int _delay;				// Delay per operation
 
 	int _n_comparisons;			// Running total of comparisons
 	int _n_swaps;				// Running total of swaps

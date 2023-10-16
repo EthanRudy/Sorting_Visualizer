@@ -87,4 +87,4 @@ void _Template_::check() {
 	swap_b = -1;
 }
 
-#endif // _TEMPLATE__H
+#endif // _TEMPLATE__HPP

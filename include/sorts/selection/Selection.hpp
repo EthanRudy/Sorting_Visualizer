@@ -60,13 +60,13 @@ void Selection::run() {
 			++sort_info._n_comparisons;
 			if (arr[j] < arr[k]) {
 				k = j;
-				usleep(delay);
 			}
 		}
 
 		++sort_info._n_comparisons;
 		if (k != i) {
 			swap(i, k);
+			usleep(delay);
 		}
 	}
 
@@ -85,7 +85,7 @@ void Selection::run() {
 void Selection::check() {
 	for (short i = 1; i < len; ++i) {
 		swap_a = i - 1;
-		swap_b = i;
+		swap_a = i;
 		check_ind = i;
 
 		usleep(delay);
