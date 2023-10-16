@@ -31,12 +31,12 @@ private:
 
 // Default Constructor
 Insertion::Insertion() : Sort() {
-	sort_info._sort_name = "<_TEMPLATE_ CLASSIFICATION> Sorts: _TEMPLATE_ Sort";
+	sort_info._sort_name = "Insertion Sorts: Insertion Sort";
 }
 
 // Primary Constructor
 Insertion::Insertion(short length) : Sort(length) {
-	sort_info._sort_name = "<_TEMPLATE_ CLASSIFICATION> Sorts: _TEMPLATE_ Sort";
+	sort_info._sort_name = "Insertion Sorts: Insertion Sort";
 }
 
 // Runs the sort
