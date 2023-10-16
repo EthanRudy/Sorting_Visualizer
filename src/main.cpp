@@ -8,6 +8,9 @@
 
 #include "../include/sorts/selection/Selection.hpp"
 #include "../include/sorts/selection/Smooth.hpp"
+#include "../include/sorts/selection/MinHeap.hpp"
+#include "../include/sorts/selection/MaxHeap.hpp"
+
 #include "../include/Visualizer.h"
 
 // https://developer.lsst.io/cpp/style.html
@@ -15,11 +18,10 @@
 /*
 	// Selection
 	selection,			DONE
-	smooth,
-	min_heap,
-	max_heap,
-	mm_heap,
-	cycle,
+	smooth,				DONE
+	min_heap,			DONE
+	max_heap,			DONE
+	cycle,				
 
 	// Insertion
 	insertion,
@@ -63,15 +65,14 @@
 */
 
 // Number of sorts availible to the user
-const short N_SORTS = 36;
+const short N_SORTS = 35;
 
 // Polymorphic Sort list. Holds an instance of each available sort
 Sort* sort_list[N_SORTS] = {
 	new Selection,
 	new Smooth,
-	new Sort,
-	new Sort,
-	new Sort,
+	new MinHeap,
+	new MaxHeap,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -134,7 +135,9 @@ int main() {
 
 	std::string sort_prompt = "Enter Sort Index:\n"
 		"(0) Selection\n"
-		"(1) Smooth";
+		"(1) Smooth\n"
+		"(2) Min Heap\n"
+		"(3) Max Heap";
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);

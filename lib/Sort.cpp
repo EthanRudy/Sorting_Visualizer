@@ -110,6 +110,16 @@ void Sort::check() {
 
 }
 
+// Reverses all indices
+void Sort::reverse() {
+	++sort_info._n_reversals;
+
+	for (int i = 0; i < len / 2; ++i) {
+		swap(i, len - i - 1);
+		usleep(delay);
+	}
+}
+
 // Swaps two array indices (A & B)
 void Sort::swap(short a, short b) {
 	short temp = arr[a];		// Swap values

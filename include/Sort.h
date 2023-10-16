@@ -70,9 +70,16 @@ public:
 	*/
 	virtual void run();
 
-	/** Checks the sort
+	/** 
+	* Checks the sort
 	*/
 	virtual void check();
+
+	/**
+	* Reverses all indices
+	*/
+	void reverse();
+
 
 	bool started;		// Bool to hang the thread before we want to start
 	bool finished;		// Bool used to join the thread after the sort ends
