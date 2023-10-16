@@ -1,88 +1,195 @@
-#include <SFML/Graphics.hpp>
+/*
+	COPYRIGHT
+*/
 
 #include <iostream>
 #include <string>
-#include <time.h>
-#include <random>
+#include <climits>
 
-#include "display_manager.hpp"
+#include "../include/sorts/selection/Selection.hpp"
+#include "../include/Visualizer.h"
 
+// https://developer.lsst.io/cpp/style.html
 
+/* 	Goal Sorts
 
-/*
-	Get Input (inclusive)
-	@param prompt
-	@param min
-	@param max
-	@return choice
+	// Selection
+	selection,		DONE
+	smooth,
+	min_heap,
+	max_heap,
+	mm_heap,
+	cycle,
+
+	// Insertion
+	insertion,
+	shell,
+	tree,
+	bin_insertion,
+
+	// Exchange
+	gnome,
+	bin_gnome,
+	bubble,
+	circle,
+	cocktail,
+	comb,
+	odd_even,
+	shove,
+	optim_gnome,
+	optim_bubble,
+	optim_cocktail,
+	quick,
+	stable_quick,
+
+	// Distribution
+	american_flag,
+	bin_quick,
+	bogo,
+	gravity,
+	counting,
+	LSD_radix,
+	MSD_radix,
+	pigeonhole,
+	shatter,
+	time,
+
+	// Concurrent
+	bitonic,
+
+	// Merge
+	merge,
+	quad, 
 */
-int getInput(const std::string& prompt, int min, int max);
 
-/*
-	is Numeric
-	@param str
-	@return T/F if str is only numeric
+// Number of sorts availible to the user
+const short N_SORTS = 36;
+
+// Polymorphic Sort list. Holds an instance of each available sort
+Sort* sort_list[N_SORTS] = {
+	new Selection,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+	new Sort,
+};
+
+/**
+* Gets input within the specified range (inclusive)
+* 
+* @param Text prompt
+* @param Minimum value
+* @param Maximum value
+* 
+* @return Valid input
 */
-bool is_numeric(const std::string& str);
+short getInput(std::string prompt, short min, short max);
 
 
+/**
+* Is Numerical
+* 
+* @param String to be checked
+* 
+* @return T/F representing if the string is numeric
+*/
+bool isNumeric(const std::string& str);
 
+
+/**
+* Main Program loop
+*/
 int main() {
-	std::string sorting_prompt = "Choose an algorithm listed below:\n"
-		" (0) Insertion\n"
-		" (1) Selection\n"
-		" (2) Cocktail\n"
-		" (3) Gnome\n"
-		" (4) Bubble\n"
-		" (5) Quick\n"
-		" (6) Merge\n"
-		" (7) Bead/Gravity\n"
-		" (8) Bogo\n"
-		" (9) Bitonic Merge *Number of elements must be 2^(n)!*";
 
-	int sorting_choice = getInput(sorting_prompt, 0, 9);
-	system("CLS");
-	int n_values = getInput("Enter the number of elements:", 2, -1);
-	std::vector<int> values;
-	for (int i = 0; i < n_values; ++i) { values.push_back(i + 1); }
-	srand(time(NULL));
-	for (int i = 0; i < n_values; ++i) {
-		int rI = rand() % n_values;
-		swap(values[i], values[rI]);
-	}
+	std::string sort_prompt = "Enter Sort Index:\n"
+		"(0) Selection";
 
-	int width = 1920, height = 1080;
-	system("CLS");
-	int ms = getInput("Enter delay (us):", -1, -1);
+	// What they'd like to run
+	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);
 
+	// How many values
+	short n_values = getInput("Enter number of elements:", 8, SHRT_MAX);
 
-	DisplayManager disp_man(width, height, ms);
-	disp_man.run(sorting_choice, values);
+	// How much delay
+	short delay = getInput("Enter delay (microseconds):", 0, 1000000);
+
+	Sort* chosen = sort_list[sort_choice];
+	chosen->setLength(n_values);
+	chosen->setDelay(delay);
+
+	Visualizer visualizer(chosen);
+
+	visualizer.init_window();
+	visualizer.run();
 }
 
-int getInput(const std::string& prompt, int min, int max) {
+
+// Gets input within the specified range (inclusive)
+short getInput(std::string prompt, short min, short max) {
 	std::string choice_str;
-	std::cout << prompt << "\n";
-	std::cout << " > ";
-	std::cin >> choice_str;
-	while (!is_numeric(choice_str)) {
-		std::cout << "Please input only numerical digits:\n > ";
+	bool is_num = false;
+	bool is_ranged = false;
+
+	while (!is_num || !is_ranged) {
+		std::cout << prompt << "\n > ";
 		std::cin >> choice_str;
+
+		is_num = isNumeric(choice_str);
+		
+		if (!is_num) {
+			prompt = "Please enter only numerical digits!";
+		} else {
+			short choice = std::stoi(choice_str);
+			is_ranged = (choice >= min) && (choice <= max);
+			if (!is_ranged) { 
+				prompt = "Please enter a number in the range [" + 
+										std::to_string(min) + ", " + 
+										std::to_string(max) + "]!"; 
+			}
+		}
 	}
 
-
-	int choice = std::stoi(choice_str);
-	while (((min < 0) ? false : choice < min)  || ((max < 0) ? false : choice > max)) {
-		std::cout << "Please input a digit between " << ((min < 0) ? "-inf" : std::to_string(min)) << " & " << ((max < 0) ? "inf" : std::to_string(max)) << ":\n > ";
-		std::cin >> choice;
-	}
-
-	return choice;
+	return std::stoi(choice_str);
 }
 
-bool is_numeric(const std::string& str) {
+
+// Is Numerical
+bool isNumeric(const std::string& str) {
 	for (char c : str) {
-		if (c < 48 || c > 57) { return false; }
+		if (c < 48 || c > 57) { 
+			return false; 
+		}
 	}
 	return true;
 }
