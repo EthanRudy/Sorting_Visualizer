@@ -13,6 +13,7 @@
 #include "../include/sorts/selection/Cycle.hpp"
 
 #include "../include/sorts/insertion/Insertion.hpp"
+#include "../include/sorts/insertion/Shell.hpp"
 
 #include "../include/Visualizer.h"
 
@@ -28,7 +29,7 @@
 
 	// Insertion
 	insertion,			DONE
-	shell,
+	shell,				DONE
 	tree,
 	bin_insertion,
 
@@ -78,7 +79,7 @@ Sort* sort_list[N_SORTS] = {
 	new MaxHeap,
 	new Cycle,
 	new Insertion,
-	new Sort,
+	new Shell,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -142,7 +143,8 @@ int main() {
 		"(2) Min Heap\n"
 		"(3) Max Heap\n"
 		"(4) Cycle\n"
-		"(5) Insertion\n";
+		"(5) Insertion\n"
+		"(6) Shell\n";
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);

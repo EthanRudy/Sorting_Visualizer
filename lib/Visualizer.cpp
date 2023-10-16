@@ -19,7 +19,7 @@ Visualizer::Visualizer(Sort* sort) {
 // Initializes the window object
 void Visualizer::init_window() {
 	_window.create(sf::VideoMode(_w_win, _h_win), "Sorting Algorithm Visualizer");
-	_window.setFramerateLimit(165);
+	//_window.setFramerateLimit(165);
 	
 	// Setup label visuals
 	_start_stop_label.setString("Press <Enter> to start");
