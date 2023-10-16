@@ -34,12 +34,12 @@ private:
 
 // Default Constructor
 MaxHeap::MaxHeap() : Sort() {
-	sort_info._sort_name = "Selection Sorts: Min Heap Sort";
+	sort_info._sort_name = "Selection Sorts: Max Heap Sort";
 }
 
 // Primary Constructor
 MaxHeap::MaxHeap(short length) : Sort(length) {
-	sort_info._sort_name = "Selection Sorts: Min Heap Sort";
+	sort_info._sort_name = "Selection Sorts: Max Heap Sort";
 }
 
 // Runs the sort

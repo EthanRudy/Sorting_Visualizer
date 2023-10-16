@@ -10,6 +10,7 @@
 #include "../include/sorts/selection/Smooth.hpp"
 #include "../include/sorts/selection/MinHeap.hpp"
 #include "../include/sorts/selection/MaxHeap.hpp"
+#include "../include/sorts/selection/Cycle.hpp"
 
 #include "../include/Visualizer.h"
 
@@ -21,7 +22,7 @@
 	smooth,				DONE
 	min_heap,			DONE
 	max_heap,			DONE
-	cycle,				
+	cycle,				DONE		
 
 	// Insertion
 	insertion,
@@ -73,7 +74,7 @@ Sort* sort_list[N_SORTS] = {
 	new Smooth,
 	new MinHeap,
 	new MaxHeap,
-	new Sort,
+	new Cycle,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -137,7 +138,8 @@ int main() {
 		"(0) Selection\n"
 		"(1) Smooth\n"
 		"(2) Min Heap\n"
-		"(3) Max Heap";
+		"(3) Max Heap\n"
+		"(4) Cycle";
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);
