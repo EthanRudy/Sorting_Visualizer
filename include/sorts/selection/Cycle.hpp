@@ -4,9 +4,9 @@
 #include "../../Sort.h"
 
 /*
-	Template Sort class
+	Cycle Sort class
 
-	Runs a ____ sort
+	Runs a Cycle sort
 */
 class Cycle : public Sort {
 public:

@@ -4,9 +4,9 @@
 #include "../../Sort.h"
 
 /*
-	Template Sort class
+	Max Heap Sort class
 
-	Runs a ____ sort
+	Runs a Max Heap sort
 */
 class MaxHeap : public Sort {
 public:

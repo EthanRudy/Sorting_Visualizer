@@ -4,9 +4,9 @@
 #include "../../Sort.h"
 
 /*
-	Template Sort class
+	Min Heap Sort class
 
-	Runs a ____ sort
+	Runs a Min Heap sort
 */
 class MinHeap : public Sort {
 public:

@@ -4,9 +4,9 @@
 #include "../../Sort.h"
 
 /*
-	Template Sort class
+	Insertion Sort class
 
-	Runs a ____ sort
+	Runs a Insertion sort
 */
 class Shell : public Sort {
 public:
