@@ -24,6 +24,8 @@ void Visualizer::init_window() {
 	// Setup label visuals
 	_start_stop_label.setString("Press <Enter> to start");
 	_start_stop_label.setFillColor(sf::Color::White);
+	_start_stop_label.setOutlineThickness(1);
+	_start_stop_label.setOutlineColor(sf::Color::Black);
 	_start_stop_label.setFont(_font);
 	_start_stop_label.setCharacterSize(24);
 

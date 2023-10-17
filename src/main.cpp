@@ -20,6 +20,14 @@
 #include "../include/sorts/exchange/Gnome.hpp"
 #include "../include/sorts/exchange/Bubble.hpp"
 #include "../include/sorts/exchange/Circle.hpp"
+#include "../include/sorts/exchange/Cocktail.hpp"
+#include "../include/sorts/exchange/Comb.hpp"
+#include "../include/sorts/exchange/Odd_Even.hpp"
+#include "../include/sorts/exchange/Shove.hpp"
+#include "../include/sorts/exchange/Optim_Gnome.hpp"
+#include "../include/sorts/exchange/Optim_Bubble.hpp"
+#include "../include/sorts/exchange/Optim_Cocktail.hpp"
+#include "../include/sorts/exchange/Quick.hpp"
 
 #include "../include/Visualizer.h"
 
@@ -43,15 +51,14 @@
 	gnome,				DONE
 	bubble,				DONE
 	circle,				DONE
-	cocktail,
-	comb,
-	odd_even,
-	shove,
-	optim_gnome,
-	optim_bubble,
-	optim_cocktail,
-	quick,
-	stable_quick,
+	cocktail,			DONE
+	comb,				DONE
+	odd_even,			DONE
+	shove,				DONE
+	optim_gnome,		DONE
+	optim_bubble,		DONE
+	optim_cocktail,		DONE
+	quick,				DONE
 
 	// Distribution
 	american_flag,
@@ -77,7 +84,7 @@
 */
 
 // Number of sorts availible to the user
-const short N_SORTS = 35;
+const short N_SORTS = 34;
 
 // Polymorphic Sort list. Holds an instance of each available sort
 Sort* sort_list[N_SORTS] = {
@@ -93,15 +100,14 @@ Sort* sort_list[N_SORTS] = {
 	new Gnome,
 	new Bubble,
 	new Circle,
-	new Sort,
-	new Sort,
-	new Sort,
-	new Sort,
-	new Sort,
-	new Sort,
-	new Sort,
-	new Sort,
-	new Sort,
+	new Cocktail,
+	new Comb,
+	new OddEven,
+	new Shove,
+	new OptimGnome,
+	new OptimBubble,
+	new OptimCocktail,
+	new Quick,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -157,7 +163,15 @@ int main() {
 		"(8)  Binary Insertion\n"
 		"(9)  Gnome\n"
 		"(10) Bubble\n"
-		"(11) Circle\n";
+		"(11) Circle\n"
+		"(12) Cocktail\n"
+		"(13) Comb\n"
+		"(14) Odd-Even\n"
+		"(15) Shove\n"
+		"(16) Optimized Gnome\n"
+		"(17) Optimized Bubble\n"
+		"(18) Optimized Cocktail\n"
+		"(19) Quick\n";
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);
