@@ -46,9 +46,9 @@ void Cycle::run() {
     while (!started) {}
 
     //sort_info._elapsed_timer.start();
-    usleep(10000);
+    usleep(500000);
     shuffle();
-    usleep(10000);
+    usleep(500000);
     sort_info._n_swaps -= len;
     sort_info._n_main_writes -= len;
 
