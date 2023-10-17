@@ -19,6 +19,7 @@
 
 #include "../include/sorts/exchange/Gnome.hpp"
 #include "../include/sorts/exchange/Bubble.hpp"
+#include "../include/sorts/exchange/Circle.hpp"
 
 #include "../include/Visualizer.h"
 
@@ -41,7 +42,7 @@
 	// Exchange
 	gnome,				DONE
 	bubble,				DONE
-	circle,
+	circle,				DONE
 	cocktail,
 	comb,
 	odd_even,
@@ -91,7 +92,7 @@ Sort* sort_list[N_SORTS] = {
 	new BinInsertion,
 	new Gnome,
 	new Bubble,
-	new Sort,
+	new Circle,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -155,7 +156,8 @@ int main() {
 		"(7)  Tree\n"
 		"(8)  Binary Insertion\n"
 		"(9)  Gnome\n"
-		"(10) Bubble\n";
+		"(10) Bubble\n"
+		"(11) Circle\n";
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);

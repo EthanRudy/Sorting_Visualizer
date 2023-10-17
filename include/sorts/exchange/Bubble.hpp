@@ -4,9 +4,9 @@
 #include "../../Sort.h"
 
 /*
-	Template Sort class
+	Bubble Sort class
 
-	Runs a ____ sort
+	Runs a Bubble sort
 */
 class Bubble : public Sort {
 public:
