@@ -17,6 +17,9 @@
 #include "../include/sorts/insertion/Tree.hpp"
 #include "../include/sorts/insertion/Bin_Insertion.hpp"
 
+#include "../include/sorts/exchange/Gnome.hpp"
+#include "../include/sorts/exchange/Bubble.hpp"
+
 #include "../include/Visualizer.h"
 
 // https://developer.lsst.io/cpp/style.html
@@ -36,9 +39,8 @@
 	bin_insertion,		DONE
 
 	// Exchange
-	gnome,
-	bin_gnome,
-	bubble,
+	gnome,				DONE
+	bubble,				DONE
 	circle,
 	cocktail,
 	comb,
@@ -74,7 +76,7 @@
 */
 
 // Number of sorts availible to the user
-const short N_SORTS = 36;
+const short N_SORTS = 35;
 
 // Polymorphic Sort list. Holds an instance of each available sort
 Sort* sort_list[N_SORTS] = {
@@ -87,9 +89,8 @@ Sort* sort_list[N_SORTS] = {
 	new Shell,
 	new Tree,
 	new BinInsertion,
-	new Sort,
-	new Sort,
-	new Sort,
+	new Gnome,
+	new Bubble,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -144,15 +145,17 @@ bool isNumeric(const std::string& str);
 int main() {
 
 	std::string sort_prompt = "Enter Sort Index:\n"
-		"(0) Selection\n"
-		"(1) Smooth\n"
-		"(2) Min Heap\n"
-		"(3) Max Heap\n"
-		"(4) Cycle\n"
-		"(5) Insertion\n"
-		"(6) Shell\n"
-		"(7) Tree\n"
-		"(8) Binary Insertion\n";
+		"(0)  Selection\n"
+		"(1)  Smooth\n"
+		"(2)  Min Heap\n"
+		"(3)  Max Heap\n"
+		"(4)  Cycle\n"
+		"(5)  Insertion\n"
+		"(6)  Shell\n"
+		"(7)  Tree\n"
+		"(8)  Binary Insertion\n"
+		"(9)  Gnome\n"
+		"(10) Bubble\n";
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);

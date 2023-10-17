@@ -107,7 +107,7 @@ int BinInsertion::binSearch(int target, int low, int high) {
 
 	++sort_info._n_comparisons;
 	if (high <= low) {
-		
+
 		++sort_info._n_comparisons;
 		if (target > arr[low]) {
 			return low + 1;
