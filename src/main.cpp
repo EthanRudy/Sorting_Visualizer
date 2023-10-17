@@ -15,6 +15,7 @@
 #include "../include/sorts/insertion/Insertion.hpp"
 #include "../include/sorts/insertion/Shell.hpp"
 #include "../include/sorts/insertion/Tree.hpp"
+#include "../include/sorts/insertion/Bin_Insertion.hpp"
 
 #include "../include/Visualizer.h"
 
@@ -32,7 +33,7 @@
 	insertion,			DONE
 	shell,				DONE
 	tree,				DONE
-	bin_insertion,
+	bin_insertion,		DONE
 
 	// Exchange
 	gnome,
@@ -85,7 +86,7 @@ Sort* sort_list[N_SORTS] = {
 	new Insertion,
 	new Shell,
 	new Tree,
-	new Sort,
+	new BinInsertion,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -150,7 +151,8 @@ int main() {
 		"(4) Cycle\n"
 		"(5) Insertion\n"
 		"(6) Shell\n"
-		"(7) Tree\n";
+		"(7) Tree\n"
+		"(8) Binary Insertion\n";
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);
