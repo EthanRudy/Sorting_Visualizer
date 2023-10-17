@@ -79,8 +79,6 @@ void Visualizer::poll_events() {
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 			if (!_started) {
-				// TODO MOVE THIS
-				_sort->shuffle();
 
 				_started = true;
 				_sort->started = true;

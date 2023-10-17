@@ -51,10 +51,15 @@ Smooth::Smooth(short length) : Sort(length) {
 // Runs the sort
 void Smooth::run() {
 	sort_info.init_labels();
-	sort_info._n_swaps -= len;
-	sort_info._n_main_writes -= len;
 
 	while (!started) {}
+
+	//sort_info._elapsed_timer.start();
+	usleep(10000);
+	shuffle();
+	usleep(10000);
+	sort_info._n_swaps -= len;
+	sort_info._n_main_writes -= len;
 
 	//sort_info._elapsed_timer.start();
 

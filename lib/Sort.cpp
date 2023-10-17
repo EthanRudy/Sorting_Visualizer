@@ -55,6 +55,7 @@ void Sort::shuffle() {
 	for (short i = 0; i < len; ++i) {	// Shuffle
 		short rand_i = rand() % len;
 		swap(i, rand_i);
+		usleep(1000);
 	}
 }
 
