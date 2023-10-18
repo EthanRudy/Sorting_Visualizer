@@ -29,6 +29,10 @@
 #include "../include/sorts/exchange/Optim_Cocktail.hpp"
 #include "../include/sorts/exchange/Quick.hpp"
 
+#include "../include/sorts/distributive/Bogo.hpp"
+#include "../include/sorts/distributive/Gravity.hpp"
+#include "../include/sorts/distributive/Counting.hpp"
+
 #include "../include/Visualizer.h"
 
 // https://developer.lsst.io/cpp/style.html
@@ -61,10 +65,8 @@
 	quick,				DONE
 
 	// Distribution
-	american_flag,
-	bin_quick,
-	bogo,
-	gravity,
+	bogo,				DONE
+	gravity,			DONE
 	counting,
 	LSD_radix,
 	MSD_radix,
@@ -84,7 +86,7 @@
 */
 
 // Number of sorts availible to the user
-const short N_SORTS = 34;
+const short N_SORTS = 32;
 
 // Polymorphic Sort list. Holds an instance of each available sort
 Sort* sort_list[N_SORTS] = {
@@ -108,11 +110,9 @@ Sort* sort_list[N_SORTS] = {
 	new OptimBubble,
 	new OptimCocktail,
 	new Quick,
-	new Sort,
-	new Sort,
-	new Sort,
-	new Sort,
-	new Sort,
+	new Bogo,
+	new Gravity,
+	new Counting,
 	new Sort,
 	new Sort,
 	new Sort,
@@ -152,26 +152,27 @@ bool isNumeric(const std::string& str);
 int main() {
 
 	std::string sort_prompt = "Enter Sort Index:\n"
-		"(0)  Selection\n"
-		"(1)  Smooth\n"
-		"(2)  Min Heap\n"
-		"(3)  Max Heap\n"
-		"(4)  Cycle\n"
-		"(5)  Insertion\n"
-		"(6)  Shell\n"
-		"(7)  Tree\n"
-		"(8)  Binary Insertion\n"
-		"(9)  Gnome\n"
-		"(10) Bubble\n"
-		"(11) Circle\n"
-		"(12) Cocktail\n"
-		"(13) Comb\n"
-		"(14) Odd-Even\n"
-		"(15) Shove\n"
-		"(16) Optimized Gnome\n"
-		"(17) Optimized Bubble\n"
-		"(18) Optimized Cocktail\n"
-		"(19) Quick\n";
+		"(0)  Selection				" "(16) Optimized Gnome		\n"
+		"(1)  Smooth				" "(17) Optimized Bubble	\n"
+		"(2)  Min Heap				" "(18) Optimized Cocktail	\n"
+		"(3)  Max Heap				" "(19) Quick				\n"
+		"(4)  Cycle				" "(20) Bogo					\n"
+		"(5)  Insertion				" "(21) Gravity				\n"
+		"(6)  Shell				" "(22) Counting				\n"
+		"(7)  Tree				" "(23) LSD_radix				\n"
+		"(8)  Binary Insertion			" "(24) MSD_radix		\n"
+		"(9)  Gnome				" "(25) Pigeonhole				\n"
+		"(10) Bubble				" "(26) Shatter				\n"
+		"(11) Circle				" "(27) Time				\n"
+		"(12) Cocktail				" "(28) Bitonic Merge		\n"
+		"(13) Comb				" "(29) Merge					\n"
+		"(14) Odd-Even				" "(30) Quad				\n"
+		"(15) Shove				" "(31) Intro					\n";
+		
+		
+		
+		
+		
 
 	// What they'd like to run
 	short sort_choice = getInput(sort_prompt, 0, N_SORTS - 1);
